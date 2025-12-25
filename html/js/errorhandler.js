@@ -10,7 +10,8 @@ window.onerror = function(errorMsg, url, lineNumber) {
             errorMsg = errorMsg.message;
     }
 
-    alert(errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+    // Log to console instead of alert to avoid disrupting user experience
+    console.error('[Maltrail Error]', errorMsg, 'Script:', url, 'Line:', lineNumber);
 
     try {
         $("body").loader("hide");

@@ -144,7 +144,9 @@ $(document).ready(function() {
         initDialogs();
     }
 
-    Papa.SCRIPT_PATH = "/js/papaparse.min.js"
+    // Use relative path for subpath deployment compatibility (e.g., /maltrail/)
+    var basePath = window.location.pathname.replace(/\/[^\/]*$/, '') || '';
+    Papa.SCRIPT_PATH = basePath + "/js/papaparse.min.js";
     Papa.RemoteChunkSize = CHUNK_SIZE; // 10 MB (per one chunk request)
 
     Chart.defaults.global.tooltipFontFamily = DEFAULT_FONT_FAMILY;
@@ -229,7 +231,8 @@ function initDialogs() {
                             alertify.error("Network connection issue");
                         }
                         else {
-                            window.location.href = "/";
+                            // Use relative path for subpath deployment compatibility
+                            window.location.href = window.location.pathname.replace(/\/login.*$/, '') || "/maltrail/";
                         }
                     }
                 });
