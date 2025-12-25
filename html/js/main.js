@@ -231,8 +231,8 @@ function initDialogs() {
                             alertify.error("Network connection issue");
                         }
                         else {
-                            // Use relative path for subpath deployment compatibility
-                            window.location.href = window.location.pathname.replace(/\/login.*$/, '') || "/maltrail/";
+                            // Reload current page after successful login (works with any subpath)
+                            window.location.reload();
                         }
                     }
                 });
